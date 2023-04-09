@@ -1,13 +1,14 @@
 import React from "react";
 
 const Transaction = ({ id, text, amount, deleteTransaction }) => {
+    const sign = amount < 0 ? "-" : "+";
   return (
-    <li key={id} className="minus">
-      {text} <span>${amount}</span>
+    <li key={id} className={amount<0?"minus":"plus"}>
+      {text} <span>{sign}${Math.abs(amount)}</span>
       <button
         className="delete-btn"
         onClick={() => {
-          deleteTransaction(id);
+          deleteTransaction(id); 
         }}
       >
         X

@@ -1,13 +1,21 @@
-import React, {useState} from 'react'
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalContext";
 
 const AddTransaction = () => {
-    const [text, setText] = useState('');
-    const [amount, setAmount] = useState(0);
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState(0);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(text, amount);
-    }
+  const { addTransaction } = useContext(GlobalContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      text,
+      amount: +amount,
+    };
+    addTransaction(newTransaction);
+  };
 
   return (
     <div>
@@ -44,6 +52,6 @@ const AddTransaction = () => {
       </form>
     </div>
   );
-}
+};
 
-export default AddTransaction
+export default AddTransaction;
