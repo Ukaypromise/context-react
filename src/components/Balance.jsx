@@ -1,6 +1,5 @@
-import React, {useContext} from 'react'
+import React, { useContext } from "react";
 import { GlobalContext } from "../contexts/GlobalContext";
-
 
 const Balance = () => {
   const { transactions } = useContext(GlobalContext);
@@ -14,6 +13,6 @@ const Balance = () => {
       <h1>{total}</h1>
     </div>
   );
-}
+};
 
-export default Balance
+export default Balance;
